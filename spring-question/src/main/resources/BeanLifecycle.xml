@@ -1,0 +1,14 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+    <bean class="com.hussein.lifecycle.MyBeanPostProcessor"/>
+    <bean class="com.hussein.lifecycle.MyBeanFactoryPostProcessor"/>
+    <bean class="com.hussein.lifecycle.MyInstantiationAwareBeanPostProcessor"/>
+    <bean id="studentBean" class="com.hussein.lifecycle.StudentBean" init-method="myInit"
+          destroy-method="myDestroy">
+        <property name="name" value="zwj"/>
+        <property name="age" value="21"/>
+    </bean>
+</beans>
