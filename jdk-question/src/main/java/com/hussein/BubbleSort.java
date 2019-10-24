@@ -13,28 +13,31 @@ public class BubbleSort {
     /**
      * 冒泡排序
      *
-     * @param a 数组
-     * @param n 数组长度
+     * @param arr 数组
+     * @param n   数组长度
      */
-    public static void bubbleSort(int[] a, int n) {
-        int i, j;
-        for (i = n - 1; i > 0; i--) {
-            // 初始化标记为0
-            int flag = 0;
-            // 将a[0...i]中最大的数据放在末尾
-            for (j = 0; j < i; j++) {
-                if (a[j] > a[j + 1]) {
-                    // 交换a[j]和a[j+1]
-                    int tmp = a[j];
-                    a[j] = a[j + 1];
-                    a[j + 1] = tmp;
-                    // 若发生交换，则设标记为1
-                    flag = 1;
-                    printArray(a);
+    public static void bubbleSort(int[] arr, int n) {
+        //临时变量
+        int temp;
+        //是否交换的标志
+        boolean flag;
+        ////表示趟数，一共 arr.length-1 次
+        for (int i = 0; i < arr.length - 1; i++) {
+            // 每次遍历标志位都要先置为false，才能判断后面的元素是否发生了交换
+            flag = false;
+            //选出该趟排序的最大值往后移动
+            for (int j = arr.length - 1; j > i; j--) {
+                if (arr[j] < arr[j - 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = temp;
+                    //只要有发生了交换，flag就置为true
+                    flag = true;
                 }
+                printArray(arr);
             }
-            // 若没发生交换，则说明数列已有序。
-            if (flag == 0) {
+            // 判断标志位是否为false，如果为false，说明后面的元素已经有序，就直接return
+            if (!flag) {
                 break;
             }
         }
@@ -42,10 +45,17 @@ public class BubbleSort {
 
     /**
      * 20 40 30 10 60 50
-     * 20 30 40 10 60 50
-     * 20 30 10 40 60 50
-     * 20 30 10 40 50 60
-     * 20 10 30 40 50 60
+     * 20 40 30 10 50 60
+     * 20 40 30 10 50 60
+     * 20 40 10 30 50 60
+     * 20 10 40 30 50 60
+     * 10 20 40 30 50 60
+     * 10 20 40 30 50 60
+     * 10 20 40 30 50 60
+     * 10 20 30 40 50 60
+     * 10 20 30 40 50 60
+     * 10 20 30 40 50 60
+     * 10 20 30 40 50 60
      * 10 20 30 40 50 60
      * 10 20 30 40 50 60
      */
