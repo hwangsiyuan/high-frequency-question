@@ -35,35 +35,45 @@ public class QuickSort {
                     break;
                 }
             }
-            if (i >= j){
+            if (i >= j) {
                 break;
             }
             /*交换i,j对应的值*/
             int temp = arr[i];
             arr[i] = arr[j];
             arr[j] = temp;
+            printArray(arr);
         }
         /*中枢值与j对应值交换*/
         int temp = arr[low];
         arr[low] = arr[j];
         arr[j] = temp;
+        printArray(arr);
         quickSort(arr, low, j - 1);
         quickSort(arr, j + 1, high);
     }
 
+    /**
+     * 30 40 60 10 20 50
+     * 30 20 60 10 40 50
+     * 30 20 10 60 40 50
+     * 10 20 30 60 40 50
+     * 10 20 30 60 40 50
+     * 10 20 30 50 40 60
+     * 10 20 30 40 50 60
+     * 10 20 30 40 50 60
+     */
     public static void main(String[] args) {
-        int i;
         int a[] = {30, 40, 60, 10, 20, 50};
-        System.out.printf("before sort:");
-        for (i = 0; i < a.length; i++) {
-            System.out.printf("%d ", a[i]);
-        }
-        System.out.printf("\n");
+        printArray(a);
         quickSort(a, 0, a.length - 1);
-        System.out.printf("after  sort:");
-        for (i = 0; i < a.length; i++) {
-            System.out.printf("%d ", a[i]);
+        printArray(a);
+    }
+
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.printf("%d ", arr[i]);
         }
-        System.out.printf("\n");
+        System.out.print("\n");
     }
 }

@@ -30,6 +30,7 @@ public class BubbleSort {
                     a[j + 1] = tmp;
                     // 若发生交换，则设标记为1
                     flag = 1;
+                    printArray(a);
                 }
             }
             // 若没发生交换，则说明数列已有序。
@@ -39,19 +40,26 @@ public class BubbleSort {
         }
     }
 
+    /**
+     * 20 40 30 10 60 50
+     * 20 30 40 10 60 50
+     * 20 30 10 40 60 50
+     * 20 30 10 40 50 60
+     * 20 10 30 40 50 60
+     * 10 20 30 40 50 60
+     * 10 20 30 40 50 60
+     */
     public static void main(String[] args) {
-        int i;
         int[] a = {20, 40, 30, 10, 60, 50};
-        System.out.printf("before sort:");
-        for (i = 0; i < a.length; i++) {
-            System.out.printf("%d ", a[i]);
-        }
-        System.out.printf("\n");
+        printArray(a);
         bubbleSort(a, a.length);
-        System.out.printf("after  sort:");
-        for (i = 0; i < a.length; i++) {
-            System.out.printf("%d ", a[i]);
+        printArray(a);
+    }
+
+    public static void printArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.printf("%d ", arr[i]);
         }
-        System.out.printf("\n");
+        System.out.print("\n");
     }
 }
