@@ -13,38 +13,42 @@ public class QuickSort {
     /**
      * 快速排序
      *
-     * @param a 待排序的数组
-     * @param l 数组的左边界(例如，从起始位置开始排序，则l=0)
-     * @param r 数组的右边界(例如，排序截至到数组末尾，则r=a.length-1)
+     * @param arr  待排序的数组
+     * @param low  数组的左边界(例如，从起始位置开始排序，则l=0)
+     * @param high 数组的右边界(例如，排序截至到数组末尾，则r=a.length-1)
      */
-    public static void quickSort(int[] a, int l, int r) {
-        if (l < r) {
-            int i, j, x;
-            i = l;
-            j = r;
-            x = a[i];
-            while (i < j) {
-                // 从右向左找第一个小于x的数
-                while (i < j && a[j] > x) {
-                    j--;
-                }
-                if (i < j) {
-                    a[i++] = a[j];
-                }
-                // 从左向右找第一个大于x的数
-                while (i < j && a[i] < x) {
-                    i++;
-                }
-                if (i < j) {
-                    a[j--] = a[i];
+    public static void quickSort(int[] arr, int low, int high) {
+        if (high <= low) return;
+        int i = low;
+        int j = high + 1;
+        int key = arr[low];
+        while (true) {
+            /*从左向右找比key大的值*/
+            while (arr[++i] < key) {
+                if (i == high) {
+                    break;
                 }
             }
-            a[i] = x;
-            /* 递归调用 */
-            quickSort(a, l, i - 1);
-            /* 递归调用 */
-            quickSort(a, i + 1, r);
+            /*从右向左找比key小的值*/
+            while (arr[--j] > key) {
+                if (j == low) {
+                    break;
+                }
+            }
+            if (i >= j){
+                break;
+            }
+            /*交换i,j对应的值*/
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = temp;
         }
+        /*中枢值与j对应值交换*/
+        int temp = arr[low];
+        arr[low] = arr[j];
+        arr[j] = temp;
+        quickSort(arr, low, j - 1);
+        quickSort(arr, j + 1, high);
     }
 
     public static void main(String[] args) {
