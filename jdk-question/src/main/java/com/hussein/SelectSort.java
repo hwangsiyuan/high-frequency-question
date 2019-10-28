@@ -18,15 +18,15 @@ public class SelectSort {
      */
     public static void selectSort(int[] arr, int n) {
         for (int i = 0; i < n - 1; i++) {
-            int min = i;
+            int minIndex = i;
             for (int j = i + 1; j < n; j++) {
-                if (arr[min] > arr[j]) {
-                    min = j;
+                if (arr[minIndex] > arr[j]) {
+                    minIndex = j;
                 }
             }
-            if (i != min) {
-                int temp = arr[min];
-                arr[min] = arr[i];
+            if (i != minIndex) {
+                int temp = arr[minIndex];
+                arr[minIndex] = arr[i];
                 arr[i] = temp;
             }
         }
