@@ -30,7 +30,7 @@ public class InsertSort {
     }
 
     public static void main(String[] args) {
-        int[] a = {20, 40, 30, 10, 60, 50};
+        int[] a = {40, 20, 30, 10, 60, 50};
         printArray(a);
         insertSort(a, a.length);
         printArray(a);
