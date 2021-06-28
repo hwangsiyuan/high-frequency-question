@@ -14,14 +14,14 @@ import java.util.Stack;
 public class TreeIterator {
 
     /**
-     *                         10
-     *              6                          15
-     *       4            8            12              18
-     *    1      5     7      9    11      13      16       19
+     *                           10
+     *              6                              15
+     *       4             8              12                18
+     *   1       5     7       9     11        13      16        19
      */
     public static void main(String[] args) {
         MyNode node  = buildNode();
-        //前序遍历
+        //前序遍历 10 6 4 1 5 8 7 9 15 12 11 13 18 16 19
         preOrder(node);
     }
 
