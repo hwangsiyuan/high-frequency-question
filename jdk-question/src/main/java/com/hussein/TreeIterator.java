@@ -1,7 +1,7 @@
 package com.hussein;
 import com.hussein.TreeIterator.MyNode;
 
-import java.util.Stack;
+import java.util.*;
 
 /**
  * <p>Title: TreeIterator</p>
@@ -23,6 +23,35 @@ public class TreeIterator {
         MyNode node  = buildNode();
         //前序遍历 10 6 4 1 5 8 7 9 15 12 11 13 18 16 19
         preOrder(node);
+        //层级遍历
+        List<List<String>> resultList = levelIterator(node);
+        System.out.println(resultList);
+    }
+
+    private static List<List<String>> levelIterator(MyNode node) {
+        if (node == null) {
+            return null;
+        }
+        List<List<String>> resultList = new ArrayList<>();
+        Queue<MyNode> q = new ArrayDeque();
+        q.offer(node);
+        while(!q.isEmpty()){
+            int count = q.size();
+            List<String> rowList = new ArrayList();
+            while(count > 0){
+                MyNode myNode = q.poll();
+                rowList.add(myNode.data);
+                if(myNode.left != null){
+                    q.offer(myNode.left);
+                }
+                if(myNode.right != null){
+                    q.offer(myNode.right);
+                }
+                count --;
+            }
+            resultList.add(rowList);
+        }
+        return resultList;
     }
 
     private static void preOrder(MyNode root) {
