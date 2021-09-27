@@ -11,6 +11,7 @@
     <modules>
         <module>jdk-question</module>
         <module>spring-question</module>
+        <module>algorithm-question</module>
     </modules>
 
     <name>high-frequency-question</name>
