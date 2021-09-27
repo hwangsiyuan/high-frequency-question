@@ -2,7 +2,7 @@ package com.hussein;
 
 /**
  * <p>Title: KthNum</p>
- * <p>Description: </p>
+ * <p>Description: k num</p>
  * <p>Company: www.hussein.com</p>
  *
  * @author hwangsy
