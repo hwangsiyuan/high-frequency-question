@@ -1,8 +1,6 @@
 package com.hussein;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * <p>Title: NodeInterator</p>
@@ -29,7 +27,10 @@ public class NodeInterator {
         //前序遍历2
         List<Integer> p2List = preOrderIterator2(node);
         System.out.println(p2List);
-
+        //前序遍历3
+        List<Integer> p3List = preOrderIterator3(node);
+        System.out.println(p3List);
+        System.out.println();
         System.out.println("中序遍历: ");
         //中序遍历1
         List<Integer> m1List = midOrderIterator1(node);
@@ -37,7 +38,7 @@ public class NodeInterator {
         //中序遍历2
         List<Integer> m2List = midOrderIterator2(node);
         System.out.println(m2List);
-
+        System.out.println();
         System.out.println("后序遍历: ");
         //后续遍历1
         List<Integer> a1List = afterOrderIterator1(node);
@@ -45,6 +46,55 @@ public class NodeInterator {
         //后续遍历2
         List<Integer> a2List = afterOrderIterator2(node);
         System.out.println(a2List);
+        System.out.println();
+        //层遍历
+        List<List<Integer>> levelList = levelIterator(node);
+        System.out.println(levelList);
+        System.out.println();
+    }
+
+    private static List<Integer> preOrderIterator3(Node node) {
+        List<Integer> res = new ArrayList<>();
+        if (node == null) {
+            return res;
+        }
+        Stack<Node> stack = new Stack();
+        stack.push(node);
+        while (stack.size() != 0) {
+            Node root = stack.pop();
+            if (root != null) {
+                res.add(root.val);
+                stack.add(root.right);
+                stack.push(root.left);
+            }
+        }
+        return res;
+    }
+
+    private static List<List<Integer>> levelIterator(Node node) {
+        List<List<Integer>> levelList = new ArrayList();
+        if (node == null) {
+            return levelList;
+        }
+        Queue<Node> q = new LinkedList<>();
+        q.offer(node);
+        while (!q.isEmpty()) {
+            int n = q.size();
+            List<Integer> rowValue = new ArrayList<>();
+            while (n > 0) {
+                Node curnode = q.poll();
+                rowValue.add(curnode.val);
+                if (curnode.left != null) {
+                    q.offer(curnode.left);
+                }
+                if (curnode.right != null) {
+                    q.offer(curnode.right);
+                }
+                n--;
+            }
+            levelList.add(rowValue);
+        }
+        return levelList;
     }
 
     private static List<Integer> afterOrderIterator2(Node node) {
