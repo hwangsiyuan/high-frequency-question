@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * <p>Title: NodeInterator</p>
- * <p>Description: </p>
+ * <p>Description:</p>
  * <p>Company: www.hussein.com</p>
  *
  * @author hwangsy
