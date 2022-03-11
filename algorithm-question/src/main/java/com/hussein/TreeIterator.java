@@ -1,5 +1,7 @@
 package com.hussein;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -33,8 +35,32 @@ public class TreeIterator {
         System.out.println();
         middleOrder1(head);
         System.out.println();
+        System.out.println();
         System.out.println("后序遍历：");
         afterOrder0(head);
+        System.out.println();
+        afterOrder1(head);
+        System.out.println();
+    }
+
+    private static void afterOrder1(TreeNode head) {
+        Deque<TreeNode> deque = new LinkedList<>();
+        TreeNode preNode = null;
+        while(head != null || !deque.isEmpty()){
+            while(head != null){
+                deque.push(head);
+                head = head.left;
+            }
+            head = deque.pop();
+            if(head.right == null || preNode == head.right){
+                System.out.print(head.value);
+                preNode = head;
+                head = null;
+            }else{
+                deque.push(head);
+                head = head.right;
+            }
+        }
     }
 
     private static void afterOrder0(TreeNode head) {
