@@ -2,7 +2,7 @@ package com.hussein;
 
 /**
  * <p>Title: QuickSort</p>
- * <p>Description:  </p>
+ * <p>Description: </p>
  * <p>Company: www.hussein.com</p>
  *
  * @author hwangsy
