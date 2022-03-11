@@ -6,7 +6,7 @@ import java.util.Stack;
 
 /**
  * <p>Title: TreeIterator</p>
- * <p>Description: </p>
+ * <p>Description: TreeIterator</p>
  * <p>Company: www.hussein.com</p>
  *
  * @author hwangsy
